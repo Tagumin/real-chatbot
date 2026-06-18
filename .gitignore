@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 venv/
 .env
-
+evaluate.py
 chunk/
 # Node.js
 node_modules/

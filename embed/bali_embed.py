@@ -6,6 +6,8 @@ Production-ready version:
 - Safe string handling
 - Stable Chroma initialization
 - Better logging
+- Adds `id` metadata so get_canonical_id() resolves to ceremony_X / taboo_X
+  instead of falling through to UUIDs / content[:120].
 """
 
 import json
@@ -49,6 +51,10 @@ def load_documents(json_path: str) -> List[Document]:
         category = ceremony.get("category", "")
         title = ceremony.get("title", "")
 
+        # ── FIX: pull the canonical id from metadata ──
+        ceremony_meta = ceremony.get("metadata", {}) or {}
+        canonical_id = ceremony_meta.get("id", "")
+
         for section_name, section_text in ceremony.get("text", {}).items():
             if not section_text:
                 continue
@@ -57,13 +63,14 @@ def load_documents(json_path: str) -> List[Document]:
                 Document(
                     page_content=f"{title} - {section_name.replace('_', ' ').title()}\n\n{section_text}",
                     metadata={
+                        "id": canonical_id,                        # ← ADDED
                         "type": "ceremony",
                         "category": category,
                         "ceremony_name": ceremony_name,
                         "title": title,
                         "section": section_name,
-                        "frequency": ceremony.get("metadata", {}).get("frequency", ""),
-                        "tags": ",".join(ceremony.get("metadata", {}).get("tags", [])),
+                        "frequency": ceremony_meta.get("frequency", ""),
+                        "tags": ",".join(ceremony_meta.get("tags", []) or []),
                         "domain": "culture",
                     },
                 )
@@ -78,6 +85,9 @@ def load_documents(json_path: str) -> List[Document]:
         text = taboo.get("text", "")
 
         metadata = taboo.get("metadata", {}) or {}
+
+        # ── FIX: pull the canonical id from metadata ──
+        canonical_id = metadata.get("id", "")
 
         content_parts = [
             f"TABOO: {title}",
@@ -97,6 +107,7 @@ def load_documents(json_path: str) -> List[Document]:
             Document(
                 page_content="\n".join(content_parts),
                 metadata={
+                    "id": canonical_id,                            # ← ADDED
                     "type": "taboo",
                     "category": category,
                     "title": title,
@@ -153,6 +164,7 @@ def test_query(vectorstore: Chroma):
 
     for i, doc in enumerate(results, 1):
         print(f"\nResult {i}")
+        print(f"ID: {doc.metadata.get('id')}")                       # ← ADDED to verify fix
         print(f"Type: {doc.metadata.get('type')}")
         print(f"Title: {doc.metadata.get('title')}")
         print(f"Preview: {doc.page_content[:120]}...")
@@ -178,6 +190,15 @@ def main():
     print(f"\n📄 Loaded documents: {len(docs)}")
     print(f"- Ceremonies: {sum(1 for d in docs if d.metadata['type'] == 'ceremony')}")
     print(f"- Taboos: {sum(1 for d in docs if d.metadata['type'] == 'taboo')}")
+
+    # ── Safety check: make sure every doc has an id ──
+    missing = [i for i, d in enumerate(docs) if not d.metadata.get("id")]
+    if missing:
+        print(f"\n⚠️  WARNING: {len(missing)} document(s) missing 'id' metadata!")
+        print(f"   First few indexes: {missing[:5]}")
+        print(f"   Check your JSON file — these will fall back to UUIDs at retrieval.")
+    else:
+        print(f"✅ All {len(docs)} documents have canonical `id` metadata")
 
     # 2. Embeddings
     print("\n🔮 Initializing embedding model...")
