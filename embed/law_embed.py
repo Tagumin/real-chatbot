@@ -20,7 +20,7 @@ from tqdm import tqdm
 # ─────────────────────────────────────────────
 # Replace with the path to your chunking output JSON file
 JSON_FILE       = "data/data.json" 
-VECTOR_DB       = "./vectorstore"
+VECTOR_DB       = "./vectorstore_law"
 COLLECTION_NAME = "indonesian_law_rag"
 EMBED_MODEL     = "bge-m3"
 BATCH_SIZE      = 32  # Optimal batch size for Ollama
@@ -28,39 +28,38 @@ BATCH_SIZE      = 32  # Optimal batch size for Ollama
 
 
 def load_chunks(json_path: str) -> list[Document]:
-    """
-    Reads the chunking output JSON file and converts it into 
-    a list of LangChain Document objects.
-    """
     documents = []
-    
+
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
-    
-    # Assumption: JSON contains a list of articles, and each article has a 'chunks' list
-    # If your JSON is already flat (a direct list of chunks), adjust the loop accordingly.
-    for article in data:
-        base_metadata = article.get("metadata", {})
-        
-        for chunk in article.get("chunks", []):
-            # We take 'combined' or 'original' chunk types as needed
-            # Here we take the 'combined' ones so the context is complete
-            if chunk.get("chunk_type") in ["combined", "original"]:
-                doc = Document(
-                    page_content=chunk.get("content", ""),
-                    metadata={
-                        "chunk_id": chunk.get("chunk_id", ""),
-                        "source_article": chunk.get("source_article", ""), 
-                        "parent_article": article.get("article_number", ""), 
-                        "source": base_metadata.get("source", "Unknown"),
-                        "book": base_metadata.get("book", "Unknown"),
-                        "chapter": base_metadata.get("chapter", "Unknown"),
-                    }
-                )
-                documents.append(doc)
-                
-    return documents
 
+    for article in data:
+
+        base_metadata = article.get("metadata", {})
+
+        for chunk in article.get("chunks", []):
+
+            # HANYA COMBINED
+            if chunk.get("chunk_type") != "combined":
+                continue
+
+            doc = Document(
+                page_content=chunk.get("content", ""),
+                metadata={
+                    "article_id": article.get("article_id"),
+                    "article_number": article.get("article_number"),
+                    "chunk_id": chunk.get("chunk_id"),
+                    "chunk_type": chunk.get("chunk_type"),
+                    "source_article": chunk.get("source_article"),
+                    "source": base_metadata.get("source"),
+                    "book": base_metadata.get("book"),
+                    "chapter": base_metadata.get("chapter"),
+                }
+            )
+
+            documents.append(doc)
+
+    return documents
 
 def main():
     parser = argparse.ArgumentParser(description="Embed chunks to ChromaDB")

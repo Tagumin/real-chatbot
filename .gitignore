@@ -16,3 +16,7 @@ outputs/
 # OS junk
 .DS_Store
 Thumbs.db
+
+evaluator.py
+evaluator.json
+final_results.csv

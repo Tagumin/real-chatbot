@@ -13,6 +13,7 @@
         "rules_for_tourists": "- Do not touch, move, or step on offerings placed on streets or in front of homes\n  - If invited to attend prayers at a family temple, dress in full traditional attire (sarong, sash, covered shoulders)\n  - Photograph penjors respectfully — do not lean on, pull, or interfere with them\n  - Behave with reverence near temple processions and do not obstruct ceremonial processions"
       },
       "metadata": {
+        "id": "ceremony_1",
         "type": "ceremony",
         "frequency": "every 210 days (Pawukon calendar)",
         "tags": ["dewa_yadnya"]
@@ -29,6 +30,7 @@
         "rules_for_tourists": "- Kuningan is a day of quiet devotion, not a festival in the Western sense — maintain calm and respectful behaviour near temples and homes\n  - Roads may have processions; yield to them without interfering or photographing intrusively"
       },
       "metadata": {
+        "id": "ceremony_2",
         "type": "ceremony",
         "frequency": "10 days after Galungan (every 210 days)",
         "tags": ["dewa_yadnya"]
@@ -44,6 +46,7 @@
         "meaning": "The Saka Calendar was introduced to Bali through Indian Hindu influence over a millennium ago. Nyepi marks the beginning of a new Saka year and is understood as a cosmic reset — a day for both the universe (bhuwana agung) and the individual soul (bhuwana alit) to be cleansed, realigned, and renewed.\n\nThe Four Restraints (Catur Brata Penyepian)\n\n1. Amati Geni — No Fire or Light\n   No fires may be lit and no electric lights used. Fire represents passion, ego, desire, and anger — all of which must be subdued so the soul can rest.\n\n2. Amati Karya — No Work\n   All labour and productive activity ceases. After a full year of effort, the body and spirit are given unconditional rest.\n\n3. Amati Lelunganan — No Travel\n   No one may leave their home or accommodation. The streets of Bali fall completely empty, creating an island-wide atmosphere of profound stillness found nowhere else on Earth.\n\n4. Amati Lelanguan — No Entertainment\n   All celebrations, music, socialising, and recreational activities are suspended. The mind, freed from distraction, turns inward toward reflection, prayer, and meditation.\n\nThe Full Nyepi Sequence\n\nMelasti (3–4 Days Before Nyepi)\nA purification procession to the sea (see Section 4 below).\n\nTawur Kesanga (Day Before Nyepi — Pengerupukan)\nA large-scale Bhuta Yadnya ceremony held at village crossroads and public squares to neutralise negative energies before the new year. In the evening, the famous Ogoh-Ogoh parade takes place.\n\nTawur Kesanga (Day Before Nyepi — Pengerupukan)\nA large-scale Bhuta Yadnya ceremony held at village crossroads and public squares to neutralise negative energies before the new year. In the evening, the famous Ogoh-Ogoh parade takes place.\n\nThe Ogoh-Ogoh are towering effigies — some reaching 12 metres or more — crafted by village youth over months of work. They depict demonic forces and accumulated negative energy. The effigies are paraded through the streets accompanied by gamelan percussion and torchbearers, then spun in circles at intersections to disorient and expel evil spirits before the Day of Silence begins.\n\nNyepi — The Day of Silence\nFor a full 24 hours, the island of Bali shuts down entirely:\n  - Ngurah Rai International Airport closes — no flights land or depart\n  - All roads are empty — no motor vehicles operate\n  - Shops, restaurants, markets, and offices are closed\n  - Beaches are closed to the public\n\nThe island is monitored by Pecalang — traditional Balinese community security officers — who patrol to ensure all rules are respected. Exceptions are granted only for genuine medical emergencies.\n\nNgembak Geni — The Day After Nyepi\nLife returns. Families gather, visit one another, and offer mutual forgiveness. It is a day of reconciliation and fresh beginnings.\n\nRules for Foreign Tourists (Legally Enforced)\n  - Remain inside your hotel or accommodation for the full 24 hours\n  - Do not use outdoor lighting after dark\n  - Keep noise to a minimum\n  - Do not step outside the property\n  - Hotels provide limited basic services with reduced lighting\n  - Violations can result in being escorted back to your accommodation by Pecalang officers\n\nPhilosophical Values of Nyepi\n  - Introspection — turning inward rather than outward\n  - Self-control — mastery over impulse and desire\n  - Simplicity — the value of stillness over stimulation\n  - Harmony — aligning the self with the natural and divine order\n  - Forgiveness — releasing the weight of the past year"
       },
       "metadata": {
+        "id": "ceremony_3",
         "type": "ceremony",
         "frequency": "once a year (Saka New Year)",
         "tags": [
@@ -67,6 +70,7 @@
         "rules_for_tourists": "- Dress modestly: sarong, sash, and covered shoulders at minimum — avoid beachwear\n  - Do not block the procession; give participants wide passage\n  - Maintain silence near prayers and ritual moments\n  - Do not touch or reposition offerings\n  - Ask before photographing — particularly of priests and participants in prayer"
       },
       "metadata": {
+        "id": "ceremony_4",
         "type": "ceremony",
         "frequency": "3-4 days before Nyepi (annual)",
         "tags": ["purification", "dewa_yadnya"]
@@ -83,6 +87,7 @@
         "traditions": "Offerings to Books and Sources of Knowledge\nOn this day, offerings of flowers, incense, and fruit are placed on or beside books, palm-leaf manuscripts, musical instruments, pens, and shrines in schools, libraries, homes, and temples.\n\nThe Temporary Pause from Reading\nIn traditional observance, Balinese Hindus do not read or write on the main day of Saraswati. Knowledge is being actively honored — set apart as sacred for one day before being returned to daily use.\n\nMalam Sastra — The Night of Scripture\nAs evening falls, communities gather for the reading of classical poetry and sacred songs, literary discussions, and performances of traditional arts. Knowledge is not merely venerated — it is brought alive through practice.\n\nBanyu Pinaruh — The Day After Saraswati\nThe day following Saraswati is called Banyu Pinaruh (\"Water of Knowledge\"). Devotees bathe in the ocean, a river, or sacred spring at dawn and perform prayers for clarity of mind. They then resume their studies with a spiritually cleansed mind."
       },
       "metadata": {
+        "id": "ceremony_5",
         "type": "ceremony",
         "frequency": "every 210 days (Pawukon calendar)",
         "tags": ["dewa_yadnya", "holy_day"]
@@ -100,6 +105,7 @@
         "rules_for_tourists": "Pagerwesi is not an official public holiday but is often observed by government offices, including the immigration office in Bali, which may be closed for the morning or the entire day. Tourists with scheduled immigration appointments should verify in advance.\n\nGreeting: \"Selamat Hari Raya Pagerwesi\" — roughly meaning \"Greetings on this day of rejoicing, Pagerwesi.\""
       },
       "metadata": {
+        "id": "ceremony_6",
         "type": "ceremony",
         "frequency": "every 210 days (3 days after Saraswati)",
         "tags": ["dewa_yadnya"]
@@ -116,6 +122,7 @@
         "rules_for_tourists": "- Always dress correctly: sarong, sash, covered shoulders and knees\n  - Piodalan is active worship, not a tourist show — approach with reverence\n  - Sacred dances are ritual offerings, not performances for viewing pleasure\n  - Walk clockwise around temple courtyards and altars\n  - Do not enter the innermost temple (jeroan) unless specifically invited by the temple community"
       },
       "metadata": {
+        "id": "ceremony_7",
         "type": "ceremony",
         "frequency": "annual (per temple consecration date)",
         "tags": ["temple", "dewa_yadnya"]
@@ -132,6 +139,7 @@
         "rules_for_tourists": "- Public village-wide cremations are generally open to respectful observers; private family ceremonies are not\n  - Dress: sarong, sash, covered shoulders; white is appropriate\n  - Do not treat it as a tourist attraction — ask before photographing and be discreet\n  - Keep distance unless invited closer by family members\n  - No drones or large camera setups without explicit permission\n  - If invited by a family, a small donation to the ceremony is appropriate if offered the opportunity"
       },
       "metadata": {
+        "id": "ceremony_8",
         "type": "ceremony",
         "frequency": "as needed (post-death, timing varies)",
         "tags": ["pitra_yadnya", "cremation"]
@@ -147,6 +155,7 @@
         "meaning": "After death, the deep love and attachment (tresna asih) between the living and the deceased remains strong. But the soul must continue its journey through the afterlife, and the family must also be freed from the spiritual impurity (cuntaka) that comes with death.\n\nAccording to the sacred text Lontar Yama Purana Tattwa, the human body has 11 spiritual zones, each carrying one day of cuntaka. By the 12th day, all zones of impurity have been resolved — making it the correct time for Ngarorasin.\n\nKey Element — Upacara Makelud\nThe central ritual of Ngarorasin is Makelud — a purification ceremony to remove all cuntaka from every family member. This symbolically severs the earthly bonds between the living and the deceased, allowing the family to re-enter temple grounds and sacred spaces, the soul to continue its journey freely, and the restoration of spiritual balance in the family compound.\n\nThree Purposes\n  1. Freeing the family from spiritual impurity\n  2. Expressing gratitude to the ancestor for their life\n  3. Praying for the ancestor to be united with God or to reincarnate into a new life"
       },
       "metadata": {
+        "id": "ceremony_9",
         "type": "ceremony",
         "frequency": "12 days after Ngaben",
         "tags": ["pitra_yadnya", "cremation"]
@@ -163,6 +172,7 @@
         "traditions": "Stage 1  |  Nunas Tirta         |  Requesting holy water from the temple for use in the ceremony\n  Stage 2  |  Ngajum Sawa         |  Welcoming the symbolic representation of the ancestor's spirit\n  Stage 3  |  Ngeroras            |  Ritually animating the ancestral symbol\n  Stage 4  |  Ngejot/Ngaturang    |  Offering sesaji to ask the ancestor's permission and blessing\n  Stage 5  |  Munggah             |  Elevating the ancestral symbol to a higher sacred position\n  Stage 6  |  Melaspas & Mapinton |  Purification and blessing of the ancestral symbol\n  Stage 7  |  Ngening             |  Offering banana or fruit as a gesture of honor\n  Stage 8  |  Ngelebar            |  Escorting the soul to its final sacred destination\n  Stage 9  |  Ngulapin            |  Welcoming the purified ancestral spirit back to the family shrine\n  Stage 10 |  Ngeret              |  Ritual procession accompanied by offerings and traditional dance\n  Stage 11 |  Pakelis             |  Final prayers and offerings, formally closing the ceremony"
       },
       "metadata": {
+        "id": "ceremony_10",
         "type": "ceremony",
         "frequency": "final stage post-cremation",
         "tags": ["pitra_yadnya"]
@@ -177,6 +187,7 @@
         "overview": "3.  LIFE-CYCLE CEREMONIES (MANUSA YADNYA)\n==================================================\n\nThe Manusa Yadnya (also called Sarira Samskara) is a series of ceremonies aimed at purifying the inner self and asking for salvation, increasing spiritual life toward happiness both in this world and the hereafter. The Balinese interpret life as a process of transformation that must always be honored with ceremony — from the fetus in the womb through birth, growth, adulthood, old age, and death."
       },
       "metadata": {
+        "id": "ceremony_11",
         "type": "ceremony",
         "frequency": "periodic",
         "tags": ["pitra_yadnya"]
@@ -193,6 +204,7 @@
         "rules_for_tourists": "During pregnancy, the mother is forbidden from doing evil or speaking rudely, as this is believed to affect the nature and character of the baby."
       },
       "metadata": {
+        "id": "ceremony_12",
         "type": "ceremony",
         "frequency": "7th month of pregnancy",
         "tags": ["life_cycle", "pitra_yadnya"]
@@ -207,6 +219,7 @@
         "overview": "2. DAPETAN / KEPUS PUSAR — Birth & Umbilical Cord Ceremony\n-----------------------------------------------------------\n\nWhen the baby is born, the family performs a ritual to treat the placenta, which is considered the spiritual sibling of the baby — one of its four protective spiritual siblings (Kanda Pat) that will accompany the child throughout life.\n\nA second post-natal ceremony is celebrated when the child is twelve days old, called Bajang Colong/Ngerorasin. This aims to cleanse the baby's soul from any negative influence that may have been carried from the womb. The baby is also given its name at this time."
       },
       "metadata": {
+        "id": "ceremony_13",
         "type": "ceremony",
         "frequency": "at birth + 12 days old",
         "tags": ["life_cycle", "pitra_yadnya"]
@@ -221,6 +234,7 @@
         "overview": "3. NYAMBUTIN / TUTUG KAMBUHAN — The 105-Day Ceremony\n------------------------------------------------------\n\nThe Tutug Kambuhan ceremony is aimed at cleansing the baby and mother from impurities. After this ritual, the baby and mother are permitted to enter sacred areas such as a temple.\n\nA newly born baby is not yet considered a full human being but rather a manifestation of God descending to Earth. At the first Otonan (210 days), the baby is allowed to touch the ground for the first time — from this moment onward it is considered a full human being and may join in human interaction on the earth."
       },
       "metadata": {
+        "id": "ceremony_14",
         "type": "ceremony",
         "frequency": "105 days after birth",
         "tags": ["pitra_yadnya", "holy_day"]
@@ -235,6 +249,7 @@
         "meaning": "The ceremony is an expression of gratitude to ancestors and to Sang Hyang Widhi Wasa, and an opportunity to make up for the errors of prior life in pursuit of a more perfect existence. It is led by a Hindu priest or family elder.\n\nThe ceremony is always accompanied by prayer and the giving of a string bracelet. The prayer carries the hope of being physically strong, strong in determination, strong in belief in God and truth, and strong in facing all challenges of life.\n\nThe first Otonan (when the baby is around 6 months old) tends to be more complete and sacred. Subsequent Otonan ceremonies can be carried out more simply, but prayers, offerings, and sincere intention are always essential."
       },
       "metadata": {
+        "id": "ceremony_15",
         "type": "ceremony",
         "frequency": "every 210 days (birthday)",
         "tags": ["life_cycle", "pitra_yadnya", "holy_day"]
@@ -250,6 +265,7 @@
         "rules_for_tourists": "Approach the tooth-filing ceremony with curiosity and respect. It is not a tourist attraction — it is a sacred rite defining a significant moment in a young person's life. Never photograph participants without permission, dress modestly, and remain silent and observant."
       },
       "metadata": {
+        "id": "ceremony_16",
         "type": "ceremony",
         "frequency": "at puberty (or before marriage)",
         "tags": ["life_cycle", "pitra_yadnya"]
@@ -264,6 +280,7 @@
         "traditions": "The ceremony has multiple stages. The groom formally visits the bride's family (Mapesedek), followed by rituals of purification and sacred blessing. After the ceremony, the bride formally leaves her ancestral family compound and joins her husband's — a profound spiritual transition, not merely a social one."
       },
       "metadata": {
+        "id": "ceremony_17",
         "type": "ceremony",
         "frequency": "at marriage",
         "tags": ["wedding", "pitra_yadnya"]
@@ -278,6 +295,7 @@
         "traditions": "The ceremony uses offerings scaled to the level of the ritual — from simple rice offerings (segehan) to larger animal sacrifice offerings (caru). The Mecaru can be performed at intersections, in homes, or at temples depending on the scope of purification needed."
       },
       "metadata": {
+        "id": "ceremony_18",
         "type": "ceremony",
         "frequency": "as needed (periodic purification)",
         "tags": ["purification", "bhuta_yadnya"]
@@ -292,6 +310,7 @@
         "rules_for_tourists": "- Tourists are welcome to watch the Ogoh-Ogoh procession but must not stand in the road and block the procession\n  - The following day, Nyepi, foreign tourists staying in Bali are legally required to remain indoors, refrain from using lights, making noise, or going outside"
       },
       "metadata": {
+        "id": "ceremony_19",
         "type": "ceremony",
         "frequency": "day before Nyepi (annual)",
         "tags": [
@@ -313,6 +332,7 @@
         "traditions": "Cows receive particular honor as they assist farmers in plowing rice fields. They are washed and dressed, and a special spiral of coconut leaves is placed on their horns. Pigs are usually decorated with a white cloth wrapping their bellies.\n\nIn a more modern context, Tumpek Kandang is often related to wildlife preservation, with ceremonies held at zoos and wildlife preserves in Bali."
       },
       "metadata": {
+        "id": "ceremony_20",
         "type": "ceremony",
         "frequency": "every 210 days (Saturday Uye, week 22)",
         "tags": ["nature", "bhuta_yadnya"]
@@ -327,6 +347,7 @@
         "traditions": "The rituals include pengarah (announcing to the plants that they are being blessed), pengatag (tapping or partially peeling the plant and placing hanging ornaments upon it), and bubuh (offering rice porridge as nourishment). On this day, people are forbidden from climbing trees.\n\nTumpek Uduh embodies the ancestral local wisdom that residents should protect the environment by planting and caring for trees."
       },
       "metadata": {
+        "id": "ceremony_21",
         "type": "ceremony",
         "frequency": "every 210 days (Saniscara Kliwon Wariga)",
         "tags": ["nature", "bhuta_yadnya"]
@@ -341,6 +362,7 @@
         "overview": "1. MEDIKSHA — Priest Ordination Ceremony\n-----------------------------------------\n\nMediksha is the consecration of an ordinary person (welaka) to become a sulinggih (holy person). It is a ceremony of purification — both physical and spiritual — marking a transcendence from worldly concerns.\n\nThrough Mediksha, the individual undergoes a \"second birth\" (dvijati) — a rebirth not of the body but of the spirit. The person emerges no longer as an ordinary layperson, but as a Sulinggih (with titles such as Pedanda, Bhagawan, Pandita Mpu, or Rsi), taking on the sacred responsibility of guiding the community in Dharma."
       },
       "metadata": {
+        "id": "ceremony_22",
         "type": "ceremony",
         "frequency": "at priest ordination",
         "tags": ["priesthood", "rsi_yadnya"]
@@ -356,6 +378,7 @@
         "traditions": "- Do not eat, drink, or smoke inside temple grounds\n  - Do not point your feet at altars, offerings, or sacred objects\n  - Do not touch or reposition offerings — even for a better photograph\n  - Do not interrupt prayers, processions, or ritual moments\n  - Do not climb on altars, walls, statues, or sacred structures\n\nWho May Not Enter Temples\n  - Women who are menstruating — blood is considered spiritually impure in sacred spaces\n  - People with open bleeding wounds\n  - People who are in mourning — traditionally advised to wait\n  - Children carried by parents must also follow the dress code\n\nPhotography\n  - Photography is generally permitted in outer temple courtyards but not in the inner sanctum (jeroan)\n  - Never mimic prayer poses or sacred gestures for photographs\n  - Ask before photographing priests, participants in prayer, or ceremonial objects\n  - No drones without explicit permission from the temple or ceremony organisers\n  - Social media posts should name and respect the ceremony — never mock or parody it\n\nPhotography\n  - Photography is generally permitted in outer temple courtyards but not in the inner sanctum (jeroan)\n  - Never mimic prayer poses or sacred gestures for photographs\n  - Ask before photographing priests, participants in prayer, or ceremonial objects\n  - No drones without explicit permission from the temple or ceremony organisers\n  - Social media posts should name and respect the ceremony — never mock or parody it\n\nThe Spirit Behind All Rules\nEvery rule governing behaviour at Balinese ceremonies flows from the same philosophical source: Tri Hita Karana — the three causes of well-being and harmony:\n\n  1. Harmony between humans and God\n  2. Harmony between humans and each other\n  3. Harmony between humans and the natural world\n\nAs a visitor, following these rules is not merely compliance with local custom — it is active participation in one of humanity's most living, breathing, and beautifully integrated spiritual traditions. The Balinese are generous in welcoming respectful guests, and your mindfulness as a visitor ripples outward into the community, sustaining both spiritual and cultural well-being."
       },
       "metadata": {
+        "id": "ceremony_23",
         "type": "ceremony",
         "frequency": "upon completion of priestly study",
         "tags": ["priesthood", "rsi_yadnya"]
@@ -369,6 +392,7 @@
       "title": "Entering Temple Gates During \"Cuntaka\" (Spiritual Impurity)",
       "text": "Crossing a temple's outer gateway (Candi Bentar) while in a temporary state of spiritual impurity or energetic vulnerability. - Who is Considered Cuntaka?: Anyone experiencing their menstrual cycle; anyone with an open, actively bleeding physical wound; women who have given birth within the last 42 days; or individuals grieving a death in their immediate family (within a 3-to-7-day window).",
       "metadata": {
+        "id": "taboo_1",
         "type": "taboo",
         "severity": "high",
         "consequence": "Immediate closure of the temple by the village council. The violator is held legally and financially liable under customary law (Desa Adat) to fund the expensive multi-day \"Pengulapan\" purification ritual."
@@ -381,6 +405,7 @@
       "title": "Improper Dress Code in Places of Worship",
       "text": "Entering temple courtyards in revealing clothes, beachwear, shorts, singlets, or crop tops without proper traditional covering.",
       "metadata": {
+        "id": "taboo_2",
         "type": "taboo",
         "severity": "high. tourists will be denied entry by local guardians or, if intercepted inside, forcefully escorted out and fined.",
         "protocol_guide": "Both men and women must wear a traditional sarong (Kamben) covering the legs to the ankles and a traditional sash (Selendang) tied tightly around the waist. Shoulders must remain fully covered."
@@ -393,6 +418,7 @@
       "title": "Climbing, Sitting, or Standing on Altars and Shrines (Palinggih)",
       "text": "Climbing onto stone shrines, sitting on temple perimeter walls, or leaning heavily against sacred volcanic stone carvings to take photos.",
       "metadata": {
+        "id": "taboo_3",
         "type": "taboo",
         "severity": "high",
         "rationale": "Shrines and stone thrones (such as the Padmasana) are built exclusively as temporary resting structures for descending deities.",
@@ -406,6 +432,7 @@
       "title": "Misusing and Disrespecting Holy Water (Tirta)",
       "text": "Washing feet, splashing playfully, or drinking directly from sacred purification spouts without following ritual sequence.",
       "metadata": {
+        "id": "taboo_4",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "If participating in \"Melukat\" (purification), visitors must use designated ritual sarongs, follow the exact left-to-right fountain sequence, and strictly avoid using chemical soaps, shampoos, or sunscreens."
@@ -418,6 +445,7 @@
       "title": "Intrusive Photography of Sacred Relics and Masks",
       "text": "Shoving camera lenses into the inner temple sanctum (Jeroan), using extreme flash photography on relics, or photographing praying priests.",
       "metadata": {
+        "id": "taboo_5",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "Traditional masks (Barong Ket/Rangda) and statues (Pratima) hold active spiritual entities. Visitors must stay in outer courtyards unless explicitly invited inside by a village elder."
@@ -430,6 +458,7 @@
       "title": "Entering the \"Jeroan\" (Innermost Sacred Sanctum) Without Intent to Pray",
       "text": "Wandering into the absolute inner courtyard of a temple purely for sightseeing, casual tourism, or architectural photography.",
       "metadata": {
+        "id": "taboo_6",
         "type": "taboo",
         "severity": "high",
         "rationale": "The Jeroan is reserved strictly for active worshippers, monks, and priests performing offerings. It is not a tourist gallery."
@@ -442,6 +471,7 @@
       "title": "Standing or Posing Physically Higher Than a Praying Priest (Sulinggih)",
       "text": "Standing on steps, platforms, or chairs that position a tourist's head higher than a seated priest or a community group in prayer. - Spatial Rule: In Balinese hierarchy, physical elevation denotes spiritual superiority. Tourists must maintain a lower physical posture than priests.",
       "metadata": {
+        "id": "taboo_7",
         "type": "taboo",
         "severity": "high"
       },
@@ -453,6 +483,7 @@
       "title": "Urinating or Defecating Within Temple Boundaries",
       "text": "Relieving oneself behind shrines, temple walls, or within any part of the consecrated temple complex instead of using designated restrooms.",
       "metadata": {
+        "id": "taboo_8",
         "type": "taboo",
         "severity": "critical. this causes absolute spiritual desecration (cuntaka) of the entire complex, requiring massive community purification rites."
       },
@@ -464,6 +495,7 @@
       "title": "Entering a Temple While Under the Influence of Alcohol or Drugs",
       "text": "Passing through temple gates while visibly intoxicated, smelling of alcohol, or under the influence of illicit substances.",
       "metadata": {
+        "id": "taboo_9",
         "type": "taboo",
         "severity": "high",
         "rationale": "Temples require a state of clear consciousness and respect. Intoxicated individuals disrupt the energetic purity of the site."
@@ -476,6 +508,7 @@
       "title": "Bringing Domestic Pets or Animals into Temple Grounds",
       "text": "Walking dogs, cats, or other domestic pets into the inner or outer courtyards of a temple.",
       "metadata": {
+        "id": "taboo_10",
         "type": "taboo",
         "severity": "high",
         "rationale": "Animals can cause physical damage, soil the sacred ground, or introduce biological impurities into spaces reserved for prayer."
@@ -488,6 +521,7 @@
       "title": "Stepping on, Kicking, or Stepping Over (Melompati) \"Canang Sari\"",
       "text": "Carelessly stepping on, kicking aside, or intentionally stepping over an active offering—especially when the incense is smoking.",
       "metadata": {
+        "id": "taboo_11",
         "type": "taboo",
         "severity": "high",
         "rationale": "These small palm-leaf baskets are active, living prayers offered to deities and earth spirits.",
@@ -505,6 +539,7 @@
       "title": "Climbing, Standing, or Posing Naked on Sacred Trees (Pohon Suci)",
       "text": "Climbing ancient trees (specifically Banyan/Beringin or Baobab trees located near temples) or posing inappropriately or naked near them. checkered cloth (Kain Poleng). Violators face massive community backlash, mandatory public apology rituals, and immediate deportation.",
       "metadata": {
+        "id": "taboo_12",
         "type": "taboo",
         "severity": "high"
       },
@@ -516,6 +551,7 @@
       "title": "Desecrating Mount Agung and Mount Batur (Sacred Volcanoes)",
       "text": "Leaving plastic litter, shouting loudly, throwing debris into craters, or stripping naked for social media photos on mountain peaks.",
       "metadata": {
+        "id": "taboo_13",
         "type": "taboo",
         "severity": "high",
         "rationale": "Mountains are the \"Utama\" (highest/purest) zone of Bali's spatial cosmology and are considered the home of the gods.",
@@ -529,6 +565,7 @@
       "title": "Disrupting and Obstructing Active Religious Processions (Melasti / Piodalan)",
       "text": "Overtaking, blockading, or honking aggressively at large groups of villagers walking in traditional processions along public roads.",
       "metadata": {
+        "id": "taboo_14",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "Drivers must turn off their engines, wait quietly, or follow the explicit traffic detours directed by the Pecalang (security)."
@@ -545,6 +582,7 @@
       "title": "Taking Items, Coins, or Flowers from an Active Offering",
       "text": "Removing small change (Kepeng coins), flowers, or crackers from a Canang Sari or a larger fruit tower (Ajuman) left at a shrine.",
       "metadata": {
+        "id": "taboo_15",
         "type": "taboo",
         "severity": "high",
         "rationale": "Once an offering is placed and blessed, its components belong to the spiritual realm. Stealing from them is viewed as spiritual theft."
@@ -561,6 +599,7 @@
       "title": "Swimming or Bathing in Forbidden Sacred Lakes and Springs",
       "text": "Swimming, paddleboarding, or bathing in restricted areas of Lake Tamblingan, Lake Buyan, or natural springs designated as \"Tirta\".",
       "metadata": {
+        "id": "taboo_16",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "Check local signage. Many water bodies are reserved strictly for village drinking water or ceremonial collection."
@@ -573,6 +612,7 @@
       "title": "Damaging or Defacing Sacred Checkered Cloth (Kain Poleng)",
       "text": "Tearing, pulling down, or stepping on the black-and-white checkered cloth wrapped around trees, rocks, statues, or pillars.",
       "metadata": {
+        "id": "taboo_17",
         "type": "taboo",
         "severity": "high",
         "rationale": "The cloth symbolizes the balance of \"Rwa Bhineda\" (good and evil, dark and light) protecting a highly energetic or sacred object."
@@ -585,6 +625,7 @@
       "title": "Damaging, Carving Names into, or Defacing Sacred Rocks and Caves",
       "text": "Scratching names, graffiti, or structural modifications into sacred caves (like Goa Gajah) or natural stone formations.",
       "metadata": {
+        "id": "taboo_18",
         "type": "taboo",
         "severity": "high",
         "consequence": "Subject to federal cultural heritage protection laws, resulting in heavy fines and imprisonment."
@@ -597,6 +638,7 @@
       "title": "Throwing Trash or Coins Into Sacred Water Spouts and Fountains",
       "text": "Treating sacred ritual fountains as \"wishing wells\" by tossing foreign coins, plastics, or garbage into the pools.",
       "metadata": {
+        "id": "taboo_19",
         "type": "taboo",
         "severity": "high",
         "rationale": "It pollutes the water supply used for blessings and violates the structural sanctity of the ritual infrastructure."
@@ -609,6 +651,7 @@
       "title": "Disturbing or Feeding Animals Inhabiting Sacred Forests (e.g., Monkey Forests)",
       "text": "Teasing, hitting, or feeding unauthorized, processed human food to monkeys, bats, or animals in protected temple forests (e.g., Sangeh).",
       "metadata": {
+        "id": "taboo_20",
         "type": "taboo",
         "severity": "high",
         "rationale": "These animals are considered guardians of the temples. Disturbing them breaks the ecological and spiritual balance of the area."
@@ -621,6 +664,7 @@
       "title": "Touching or Patting a Balinese Person’s Head",
       "text": "Playfully patting an adult's head, ruffling a child’s hair, or passing an object directly over someone's head. - Spatial Cosmology (Tri Angga): The head is the \"Utama Angga\" (highest/purest zone), the seat of the soul. Touching it is a severe breach of boundaries.",
       "metadata": {
+        "id": "taboo_21",
         "type": "taboo",
         "severity": "high"
       },
@@ -632,6 +676,7 @@
       "title": "Pointing the Soles of Your Feet at People, Priests, or Statues",
       "text": "Lounging on chairs, mats, or temple floors with your legs extended so that the bottom of your feet point directly at others. - Spatial Cosmology (Tri Angga): The feet are \"Nista Angga\" (lowest/dirtiest zone), associated with the underworld. Pointing them is deeply insulting.",
       "metadata": {
+        "id": "taboo_22",
         "type": "taboo",
         "severity": "high"
       },
@@ -643,6 +688,7 @@
       "title": "Inappropriate Use of the Left Hand for Transactions",
       "text": "Handing over money to vendors, passing food, or pointing at objects using your left hand.",
       "metadata": {
+        "id": "taboo_23",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "The left hand is culturally reserved for personal hygiene. Always use your right hand. For maximum politeness, support your right elbow gently with your left hand when interacting with an elder or priest."
@@ -655,6 +701,7 @@
       "title": "Shouting, Screaming, or Displaying Public Anger (Marah)",
       "text": "Engaging in loud, aggressive verbal confrontations, screaming at staff, or causing public scenes due to service delays or disputes.",
       "metadata": {
+        "id": "taboo_24",
         "type": "taboo",
         "severity": "high",
         "rationale": "Balinese culture prioritizes harmony, emotional restraint, and calmness. Public displays of anger result in a total loss of respect."
@@ -667,6 +714,7 @@
       "title": "Showing Intense Public Displays of Affection (PDA) Near Sacred Sites",
       "text": "Deep kissing, heavy embracing, or highly intimate physical contact inside or directly outside temples, shrines, and sacred forests. near spiritual sites violate the expected purity of the environment.",
       "metadata": {
+        "id": "taboo_25",
         "type": "taboo",
         "severity": "high"
       },
@@ -678,6 +726,7 @@
       "title": "Pointing At People or Objects with an Extended Index Finger",
       "text": "Using a stiff index finger to point directly at a person, a sacred statue, or a historical painting during conversation.",
       "metadata": {
+        "id": "taboo_26",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "Pointing with the index finger is considered rude and aggressive. Instead, use your right hand with the fingers loosely curled and the thumb pointing toward the object/person."
@@ -690,6 +739,7 @@
       "title": "Entering Private Compound Family Temples (Sanggah) Uninvited",
       "text": "Walking casually through the open gates of traditional Balinese walled home compounds to explore or photograph their private family shrines.",
       "metadata": {
+        "id": "taboo_27",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "Home compounds are private property. You must always receive an explicit invitation from the homeowners before stepping inside."
@@ -702,6 +752,7 @@
       "title": "Interrupting or Speaking Loudly Near a Person in Deep Prayer",
       "text": "Approaching an individual who is meditating, holding incense, or chanting, and asking them questions or making loud noises nearby.",
       "metadata": {
+        "id": "taboo_28",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "Maintain a respectful distance (minimum 3 meters) and remain completely silent until their ritual communication is finished."
@@ -714,6 +765,7 @@
       "title": "Wearing Footwear Inside Consecrated Pavilions (Bale)",
       "text": "Walking with shoes, sandals, or flip-flops onto raised stone or wooden platforms (Bale) within temples or home compounds.",
       "metadata": {
+        "id": "taboo_29",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "Always leave your footwear at the base of the steps before stepping onto any raised pavilion platform."
@@ -726,6 +778,7 @@
       "title": "Stepping Over Someone Who Is Seated on the Floor",
       "text": "Walking carelessly and striding directly over the legs or body of a Balinese person sitting or kneeling on the ground.",
       "metadata": {
+        "id": "taboo_30",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "Walk around the person. If space is tight, bow your upper body slightly, extend one hand downward, and say \"permisi\" (excuse me)."
@@ -738,6 +791,7 @@
       "title": "Complete Violation of Nyepi (The Day of Silence) Regulations",
       "text": "Swimming loudly in open resort pools, wandering outside your hotel gate, or keeping bright patio lights on during Nyepi night. - Scope: Applies to all individuals across the island. Zero exemptions.",
       "metadata": {
+        "id": "taboo_31",
         "type": "taboo",
         "severity": "high",
         "consequence": "Immediate detention by Pecalang patrols, overnight lockdown at the local community hall (Bale Banjar), heavy fines, and deportation."
@@ -750,6 +804,7 @@
       "title": "Flying Drones Over Active Ceremonies and Temples Without Permits",
       "text": "Operating consumer drones directly above temple courtyards during active prayers, processions, or over the heads of priests.",
       "metadata": {
+        "id": "taboo_32",
         "type": "taboo",
         "severity": "high",
         "rationale": "Drones cause noise pollution, disrupt the spiritual silence, and pose a physical risk of crashing into ancient structures or devotees."
@@ -762,6 +817,7 @@
       "title": "Disrespecting or Ignoring the Directives of the Pecalang (Adat Security)",
       "text": "Arguing with, bypassing, or ignoring the commands of traditional security guards wearing traditional sarongs and vests during events. to manage traffic, close roads, secure temples, and detain violators.",
       "metadata": {
+        "id": "taboo_33",
         "type": "taboo",
         "severity": "high"
       },
@@ -776,6 +832,7 @@
       "title": "Commercial Filming inside Temples Without a Customary Permit",
       "text": "Using professional tripods, lighting rigs, or models to shoot commercials, music videos, or paid content inside a temple without written clearance from the local Desa Adat and government tourism boards. commercial setups face equipment confiscation and legal fines.",
       "metadata": {
+        "id": "taboo_34",
         "type": "taboo",
         "severity": "high"
       },
@@ -787,6 +844,7 @@
       "title": "Tresprinting or Breaching Blockaded Roads During Ceremonies",
       "text": "Moving or driving past temporary bamboo or wooden barricades placed across roads by village authorities indicating an active ritual.",
       "metadata": {
+        "id": "taboo_35",
         "type": "taboo",
         "severity": "high",
         "protocol_guide": "Barricades indicate the road has temporarily become a sacred space. Turn around and find an alternative route immediately."
@@ -802,6 +860,7 @@
       "title": "Working or Conducting Business on a Tourist Visa (KITAS/BKS Violations)",
       "text": "Providing yoga instruction, running photography businesses, or doing digital nomad work for local clients while on a standard tourist visa.",
       "metadata": {
+        "id": "taboo_36",
         "type": "taboo",
         "severity": "high",
         "consequence": "Highly enforced by immigration task forces. Results in immediate fines, detention, deportation, and blacklisting from Indonesia."
@@ -814,6 +873,7 @@
       "title": "Making Noise or Playing Loud Music After Midnight in Residential Villages",
       "text": "Blasting music from sound systems or shouting at villas located deep within traditional residential areas (outside commercial zones). duties. Disrupting village peace triggers direct intervention by the Adat.",
       "metadata": {
+        "id": "taboo_37",
         "type": "taboo",
         "severity": "high"
       },
@@ -825,6 +885,7 @@
       "title": "Disrespecting the Indonesian National Anthem or Flag at Official Events",
       "text": "Sitting down, talking loudly, or mocking the \"Indonesia Raya\" anthem or state symbols during local government or official tourism events.",
       "metadata": {
+        "id": "taboo_38",
         "type": "taboo",
         "severity": "high",
         "consequence": "Strictly illegal under national law and causes deep local offense."
@@ -837,6 +898,7 @@
       "title": "Haggling Aggressively or Insulting the \"First Sale\" (Penglaris) of the Day",
       "text": "Shouting down prices, insulting merchandise quality, or walking away angrily during the first transaction of the morning.",
       "metadata": {
+        "id": "taboo_39",
         "type": "taboo",
         "severity": "high",
         "rationale": "The first sale of the day (*Penglaris*) is believed to dictate the shop's financial luck for the rest of the day. Be fair and polite."
@@ -849,6 +911,7 @@
       "title": "Stepping into or Disrupting Fresh Subak Agricultural Irrigation Channels",
       "text": "Walking carelessly through, washing muddy shoes in, or blocking the flowing water channels within active rice terraces (e.g., Tegallalang).",
       "metadata": {
+        "id": "taboo_40",
         "type": "taboo",
         "severity": "high",
         "rationale": "The Subak system is a UNESCO-protected, spiritually managed cooperative irrigation network. Disrupting it affects farmers' livelihoods."
@@ -863,6 +926,7 @@
       "title": "Purchasing or Exporting Wildlife and Protected Marine Souvenirs",
       "text": "Buying or trying to fly out with items made from sea turtle shells, protected corals, rare shells, or taxidermied local wildlife.",
       "metadata": {
+        "id": "taboo_41",
         "type": "taboo",
         "severity": "high",
         "consequence": "Severe environmental fines and immediate seizure at Bali Ngurah Rai International Airport under wildlife conservation laws."
@@ -875,6 +939,7 @@
       "title": "Sunbathing Topless on Public Beaches",
       "text": "Women sunbathing topless or individuals wearing extreme g-string swimwear on public, non-resort beaches (e.g., Sanur, Kuta).",
       "metadata": {
+        "id": "taboo_42",
         "type": "taboo",
         "severity": "high",
         "rationale": "Bali is highly conservative outside enclosed beach clubs. Public nudity violates local indecency standards and causes severe offense."
@@ -887,6 +952,7 @@
       "title": "Using Cryptocurrencies or Unauthorized Foreign Currencies for Local Payments",
       "text": "Attempting to settle hotel bills, villa rentals, or scooter hires using crypto or direct foreign cash (like USD/AUD) on the street. - Legal Standard: Indonesian Central Bank law mandates that all physical and digital transactions within Bali must use the Indonesian Rupiah (IDR).",
       "metadata": {
+        "id": "taboo_43",
         "type": "taboo",
         "severity": "high"
       },
@@ -898,6 +964,7 @@
       "title": "Operating Scooters without Proper International Licenses or Helmets",
       "text": "Riding scooters in swimwear, without a helmet, or without an International Driving Permit (IDP) matching your motorcycle class. impoundment, steep fines, and potential deportation for traffic violations.",
       "metadata": {
+        "id": "taboo_44",
         "type": "taboo",
         "severity": "high"
       },
@@ -909,6 +976,7 @@
       "title": "Dumping Plastic or Liquid Waste into Rivers and Ravines",
       "text": "Disposing of empty plastic water bottles, food packaging, or chemical waste down steep ravines or into flowing freshwater rivers.",
       "metadata": {
+        "id": "taboo_45",
         "type": "taboo",
         "severity": "high",
         "rationale": "Rivers are spiritually tied to the ocean in the \"Nyegara Gunung\" cosmology. Polluting them desecrates downstream waters used for rituals."
@@ -921,6 +989,7 @@
       "title": "Touching, Standing On, or Damaging Marine Coral Reefs",
       "text": "Stepping on live coral structures while snorkeling or diving in protected zones like Menjangan Island or Nusa Penida.",
       "metadata": {
+        "id": "taboo_46",
         "type": "taboo",
         "severity": "high",
         "rationale": "Breaks local conservation protocols and severely damages fragile marine ecosystems that coastal villages rely on for protection."
@@ -933,6 +1002,7 @@
       "title": "Unauthorized Burning of Trash or Plastics in Open Public Spaces",
       "text": "Igniting open piles of plastic waste or garbage on public beaches, roadsides, or near residential areas.",
       "metadata": {
+        "id": "taboo_47",
         "type": "taboo",
         "severity": "high",
         "rationale": "Causes hazardous air pollution and violates municipal environmental and safety regulations."
@@ -945,6 +1015,7 @@
       "title": "Vandalizing or Painting Street Art on Traditional Stone Village Walls",
       "text": "Spray-painting graffiti or tagging traditional hand-carved volcanic tuff stone walls that line village streets. defacing them is penalized severely under property damage and customary laws.",
       "metadata": {
+        "id": "taboo_48",
         "type": "taboo",
         "severity": "high"
       },
@@ -956,6 +1027,7 @@
       "title": "Over-Haggling with Small-Scale Elderly Street Vendors",
       "text": "Engaging in aggressive, drawn-out price negotiations over low-cost items (like fruit or small crafts) sold by elderly local vendors. - Social Norm: While mild bargaining is standard in markets, squeezing profit margins from micro-vendors is seen as uncharitable and disrespectful.",
       "metadata": {
+        "id": "taboo_49",
         "type": "taboo",
         "severity": "high"
       },
@@ -967,6 +1039,7 @@
       "title": "Swimming in Areas Marked with Red Flags Due to Rip Currents",
       "text": "Ignoring physical red safety flags on dangerous beaches (such as sections of Kuta, Seminyak, or Echo Beach) to swim or wade in the water. at risk and forces local traditional lifeguards (Balawista) into dangerous rescues.",
       "metadata": {
+        "id": "taboo_50",
         "type": "taboo",
         "severity": "high"
       },
