@@ -27,11 +27,11 @@ DBS = {
     }
 }
 
-VECTOR_TOP_K = 10
-BM25_TOP_K   = 10
+VECTOR_TOP_K = 25
+BM25_TOP_K   = 25
 RERANK_TOP_K = 5
 
-RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+RERANKER_MODEL = "BAAI/bge-reranker-v2-m3"
 
 # ─────────────────────────────
 # EMBEDDINGS

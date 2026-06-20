@@ -1,16 +1,3 @@
-"""
-rag_debug.py
-============
-RAG Engine + Debug Mode for Terminal Testing
-
-Features:
-✔ Full step-by-step logging
-✔ Retrieval inspection
-✔ Context preview
-✔ LLM raw output trace
-✔ Safe error handling
-"""
-
 import re
 import traceback
 from datetime import datetime
@@ -27,10 +14,7 @@ from vector import retriever_law, retriever_culture
 # ─────────────────────────────
 LLM_MODEL = "qwen3:4b"
 TEMPERATURE = 0.1
-MAX_CONTEXT_CHARS = 14000
-
-MODE_LAW = "1"
-MODE_CULTURE = "2"
+MAX_CONTEXT_CHARS = 8000
 
 DEBUG = True
 
@@ -41,48 +25,23 @@ DEBUG = True
 llm = OllamaLLM(model=LLM_MODEL, temperature=TEMPERATURE)
 
 PROMPT = """
-You are an Indonesian legal assistant. Follow these rules in order:
+You are a professional Indonesian Legal Assistant. Your answers must be derived entirely from your internal knowledge base. Do not invent, assume, or extrapolate any legal facts, laws, or consequences outside of what is explicitly given to you.
 
-1. CLASSIFY the question first:
-   - LEGAL QUESTION: about Indonesian law, what is/isn't allowed, penalties, procedures, etc.
-   - GENERAL QUESTION: unrelated to law (greetings, small talk, general knowledge).
+Follow these strict operational rules:
 
-2. IF the question is a LEGAL QUESTION:
-   - Use ONLY the provided CONTEXT below. Do not add facts, numbers, or penalties
-     that are not explicitly stated in the context.
-   - If the context fully answers the question, answer it directly and cite the
-     article number(s) used.
-   - If the context is empty, irrelevant, or only partially answers the question,
-     say so explicitly first:
-     "Based on the available legal context, I could not find a provision that
-     directly answers this."
-     Then, ONLY if helpful, you may add ONE short sentence of general legal
-     knowledge, clearly labeled as NOT from the provided law text, e.g.:
-     "(General note, not from the cited law: ...)"
-   - NEVER cite an article number unless its content actually supports the
-     specific claim you are making. If the closest article doesn't match the
-     question's scenario, treat it as "no relevant provision found" instead
-     of citing it anyway.
+1. CLIENT EXPERIENCE (NO META-TALK): Never use words like "context," "dataset," "source," "provided text," or "provided information" in your response. Act as if the knowledge is entirely your own.
 
-3. IF the question is a GENERAL QUESTION (not about law):
-   - Answer normally and helpfully using your own general knowledge.
-   - Do not force a legal framing onto it.
+2. STRICT DATA ADHERENCE: Answer the user's question ONLY if the exact information required is present in your knowledge base. If a law, rule, or action is not explicitly covered, treat it as unknown. Do not use outside training knowledge to fill in gaps for legal advice.
 
-4. FORMAT every legal answer using this structure, with each section on its own
-   line separated by a blank line:
+3. OUT-OF-DATA FALLBACK: If the question cannot be fully answered using only your knowledge base, you must politely state that you do not have that specific information.
+   - Good response: "I do not have the specific regulations regarding [Topic] available at this time to give you an accurate answer."
+   - Bad response: "That information is not in the provided context."
 
-   **Summary**
-   One short sentence answering the question directly.
+4. NON-LEGAL QUESTIONS: For general, non-legal inputs (like greetings, "thank you," or casual chat), respond naturally, politely, and briefly while maintaining your professional persona.
 
-   **Basis**
-   The relevant article number(s) and what they actually say, in plain language.
-
-   **Details**
-   Any conditions, exceptions, or penalties, as a short bullet list if there
-   are multiple points.
-
-   Keep language clear and avoid legal jargon where a plain-language
-   equivalent exists.
+5. FORMATTING:
+   - Provide a clear, direct answer in the first sentence.
+   - Use structured bullet points, short paragraphs, and bold text for key terms so the user can scan the response effortlessly.
 
 CONTEXT:
 {context}
@@ -92,20 +51,9 @@ QUESTION:
 
 ANSWER:
 """
+
 prompt = ChatPromptTemplate.from_template(PROMPT)
-
 chain = prompt | llm | StrOutputParser()
-
-
-# ─────────────────────────────
-# RETRIEVER
-# ─────────────────────────────
-def get_retriever(mode: str):
-    if mode == MODE_LAW:
-        return retriever_law, "LAW"
-    elif mode == MODE_CULTURE:
-        return retriever_culture, "CULTURE"
-    return None, None
 
 
 # ─────────────────────────────
@@ -134,7 +82,8 @@ def clean(text: str):
     if not text:
         return ""
 
-    text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
+    # Strip any stray <tool_call>...</tool_call> blocks the model might emit.
+    text = re.sub(r"<tool_call>.*?</tool_call>", "", text, flags=re.DOTALL)
     return text.strip()
 
 
@@ -150,80 +99,79 @@ def debug_print(title, content):
     print("-" * 50)
 
 
+def debug_print_docs(docs, label: str):
+    """Shared debug printer for a list of retrieved docs (used for both
+    LAW and CULTURE results) -- replaces the two near-identical loops
+    that used to exist in ask_question()."""
+    if not DEBUG or not docs:
+        return
+
+    for i, d in enumerate(docs):
+        print("\n" + "=" * 80)
+        print(f"DOC {i + 1} ({label})")
+        print("=" * 80)
+        print(f"Domain       : {d.metadata.get('domain', 'N/A')}")
+        print(f"Rerank Rank  : {d.metadata.get('rerank_rank', 'N/A')}")
+        print(f"Rerank Score : {d.metadata.get('rerank_score', 'N/A')}")
+        print(f"BM25 Score   : {d.metadata.get('bm25_score', 'N/A')}")
+        print("\nContent:")
+        print(d.page_content[:300])
+        print("=" * 80)
+
+
+def retrieve_docs(retriever, question: str):
+    """Works whether the retriever exposes .invoke() (current LangChain API)
+    or the older .get_relevant_documents()."""
+    if hasattr(retriever, "invoke"):
+        return retriever.invoke(question)
+    return retriever.get_relevant_documents(question)
+
+
 # ─────────────────────────────
 # MAIN RAG FUNCTION
 # ─────────────────────────────
-def ask_question(question: str, mode: str = MODE_LAW):
+def ask_question(question: str):
     start = datetime.now()
 
     try:
         debug_print("QUESTION", question)
-        debug_print("MODE", mode)
 
-        retriever, domain = get_retriever(mode)
+        # ── RETRIEVAL (both domains, always) ──
+        docs_law = retrieve_docs(retriever_law, question)
+        docs_culture = retrieve_docs(retriever_culture, question)
 
-        if retriever is None:
-            return {"error": "Invalid mode"}
+        debug_print("DOCS FOUND (LAW)", len(docs_law))
+        debug_print("DOCS FOUND (CULTURE)", len(docs_culture))
 
-        # ── RETRIEVAL ──
-        if hasattr(retriever, "invoke"):
-            docs = retriever.invoke(question)
-        else:
-            docs = retriever.get_relevant_documents(question)
-
-        debug_print("DOCS FOUND", len(docs))
-
-        if DEBUG and docs:
-            for i, d in enumerate(docs):
-
-                rerank_score = d.metadata.get("rerank_score", "N/A")
-                rerank_rank = d.metadata.get("rerank_rank", "N/A")
-                bm25_score = d.metadata.get("bm25_score", "N/A")
-                domain = d.metadata.get("domain", "N/A")
-
-                print("\n" + "=" * 80)
-                print(f"DOC {i+1}")
-                print("=" * 80)
-
-                print(f"Domain       : {domain}")
-                print(f"Rerank Rank  : {rerank_rank}")
-                print(f"Rerank Score : {rerank_score}")
-                print(f"BM25 Score   : {bm25_score}")
-
-                print("\nContent:")
-                print(d.page_content[:300])
-
-                print("=" * 80)
-        if not docs:
-            return {
-                "answer": "No relevant documents found.",
-                "domain": domain,
-                "docs": 0,
-                "time": (datetime.now() - start).total_seconds()
-            }
+        debug_print_docs(docs_law, "LAW")
+        debug_print_docs(docs_culture, "CULTURE")
 
         # ── CONTEXT ──
-        context = build_context(docs)
-        debug_print("CONTEXT PREVIEW", context[:500])
+        context_law = build_context(docs_law)
+        context_culture = build_context(docs_culture)
+        debug_print("CONTEXT PREVIEW (LAW)", context_law[:500])
+        debug_print("CONTEXT PREVIEW (CULTURE)", context_culture[:500])
 
         # ── LLM ──
-        raw = chain.invoke({
-            "context": context,
-            "question": question
-        })
+        raw_law = chain.invoke({"context": context_law, "question": question})
+        raw_culture = chain.invoke({"context": context_culture, "question": question})
 
-        debug_print("RAW LLM OUTPUT", raw)
+        debug_print("RAW LLM OUTPUT (LAW)", raw_law)
+        debug_print("RAW LLM OUTPUT (CULTURE)", raw_culture)
 
         # ── PROCESSING ──
-        answer = clean(raw)
+        answer_law = clean(raw_law)
+        answer_culture = clean(raw_culture)
 
-        debug_print("CLEANED ANSWER", answer)
+        debug_print("CLEANED ANSWER (LAW)", answer_law)
+        debug_print("CLEANED ANSWER (CULTURE)", answer_culture)
 
         # ── RESULT ──
         return {
-            "answer": answer,
-            "domain": domain,
-            "docs": len(docs),
+            "answer_law": answer_law,
+            "answer_culture": answer_culture,
+            "docs_law": len(docs_law),
+            "docs_culture": len(docs_culture),
             "time": (datetime.now() - start).total_seconds()
         }
 
@@ -233,6 +181,31 @@ def ask_question(question: str, mode: str = MODE_LAW):
 
         return {
             "error": str(e),
-            "answer": "System error occurred",
+            "answer_law": "System error occurred",
+            "answer_culture": "System error occurred",
             "time": (datetime.now() - start).total_seconds()
         }
+
+
+# # ─────────────────────────────
+# # CLI TEST MODE
+# # ─────────────────────────────
+# if __name__ == "__main__":
+#     print("\n🚀 RAG DEBUG MODE")
+#     print("Type 'exit' to quit\n")
+
+#     while True:
+#         q = input("Ask > ")
+
+#         if q.lower() == "exit":
+#             break
+
+#         result = ask_question(q)
+
+#         print("\n🧠 FINAL ANSWER")
+#         print("=" * 60)
+#         print("LAW PERSPECTIVE:")
+#         print(result.get("answer_law", result.get("error")))
+#         print("\nCULTURE PERSPECTIVE:")
+#         print(result.get("answer_culture", ""))
+#         print("=" * 60)

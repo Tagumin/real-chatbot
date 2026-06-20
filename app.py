@@ -13,9 +13,8 @@ def ask():
     data = request.get_json()
 
     question = data.get("question", "")
-    mode = data.get("mode", "1")
 
-    result = ask_question(question, mode)
+    result = ask_question(question)
 
     return jsonify(result)
 

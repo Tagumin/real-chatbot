@@ -38,25 +38,25 @@
         --error: #A85A52;
       }
 
-      [data-theme="culture"] {
+      .culture-theme {
         /* Balinese Terracotta & Stone Palette */
-        --primary: #B85D43;        /* Muted Terracotta / Brick */
+        --primary: #B85D43;
         --primary-dark: #8C3A23;
         --primary-light: #D68D78;
-        --secondary: #A08B7A;      /* Sandstone */
-        
-        --bg: #FCF9F2;             /* Warmer Sand */
+        --secondary: #A08B7A;
+        --bg: #FCF9F2;
         --surface: #FFFFFF;
-        --surface-hover: #F7EFEA;  /* Soft Warm White */
-        --border: #EEDCCC;         /* Warm Peach Gray */
-        
-        --text-primary: #382A25;   /* Warm Soft Black */
-        --text-secondary: #7A685D; /* Medium Warm Brown */
+        --surface-hover: #F7EFEA;
+        --border: #EEDCCC;
+        --text-primary: #382A25;
+        --text-secondary: #7A685D;
         --text-muted: #8F7D72;
-      }
-
-      [data-theme="culture"] .chat-body {
+        background-color: var(--bg);
         background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23B85D43' fill-opacity='0.04' fill-rule='evenodd'%3E%3Ccircle cx='20' cy='0' r='14'/%3E%3Ccircle cx='20' cy='40' r='14'/%3E%3Ccircle cx='0' cy='20' r='14'/%3E%3Ccircle cx='40' cy='20' r='14'/%3E%3C/g%3E%3C/svg%3E");
+      }
+      .law-theme {
+        background-color: var(--bg);
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10h20v1H0zM10 0h1v20h-1z' fill='%234A5751' fill-opacity='0.02'/%3E%3C/svg%3E");
       }
 
       body {
@@ -620,10 +620,6 @@
           border-radius: 0 0 16px 16px;
         }
       }
-
-      /* Mode Separation */
-      body[data-theme="culture"] .mode-1 { display: none !important; }
-      body:not([data-theme="culture"]) .mode-2 { display: none !important; }
     </style>
   </head>
   <body>
@@ -636,10 +632,6 @@
         <p class="sidebar-desc">
           Your premium guide to understanding legal regulations and local customs in Indonesia.
         </p>
-        <div class="mode-toggle" style="align-self: flex-start; margin-top: 8px; padding: 6px; border-radius: 16px;">
-          <button class="mode-btn active" id="modeHukum" onclick="setMode('1', event)" style="padding: 10px 24px; font-size: 14px; border-radius: 12px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);">Law</button>
-          <button class="mode-btn" id="modeBudaya" onclick="setMode('2', event)" style="padding: 10px 24px; font-size: 14px; border-radius: 12px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);">Culture</button>
-        </div>
       </div>
 
       <div class="layout-main">
@@ -684,19 +676,11 @@
 
         <!-- Chat Body -->
         <div class="chat-body" id="chatBody">
-          <div class="date-sep mode-1"><span>Today</span></div>
-          <div class="msg-row mode-1">
-            <div class="msg-av" id="partnerMsgAvL0"><span>AI</span></div>
+          <div class="date-sep"><span>Today</span></div>
+          <div class="msg-row">
+            <div class="msg-av" id="partnerMsgAv0"><span>AI</span></div>
             <div class="bubble ai">
-              Welcome to the Indonesian Law Assistant. I am ready to help you understand legal regulations and ensure your travel or stay is safe and smooth.<br><br>Active mode: <strong>Law</strong>.
-            </div>
-          </div>
-          
-          <div class="date-sep mode-2"><span>Today</span></div>
-          <div class="msg-row mode-2">
-            <div class="msg-av" id="partnerMsgAvC0"><span>AI</span></div>
-            <div class="bubble ai">
-              Welcome to the Indonesian Culture Assistant. I am ready to help you understand local customs and etiquette for a respectful and authentic experience.<br><br>Active mode: <strong>Culture</strong>.
+              Welcome to the Indonesian Law & Culture Assistant. I am ready to help you understand legal regulations, local customs, and ensure your travel or stay is safe and smooth.<br><br>Type a question, and I will check both Legal and Cultural perspectives for you!
             </div>
           </div>
         </div>
@@ -725,57 +709,9 @@
     </div>
 
     <script>
-      let currentMode = "1";
       let partnerPhotoUrl = null;
       let myPhotoUrl = null;
       let isProcessing = false;
-
-      function setMode(mode, event) {
-        if (currentMode === mode) return;
-
-        const updateDOM = () => {
-          currentMode = mode;
-          document.getElementById("modeHukum").classList.toggle("active", mode === "1");
-          document.getElementById("modeBudaya").classList.toggle("active", mode === "2");
-          if (mode === "1") {
-            document.body.setAttribute("data-theme", "law");
-          } else {
-            document.body.setAttribute("data-theme", "culture");
-          }
-        };
-
-        if (!document.startViewTransition || !event) {
-          updateDOM();
-          return;
-        }
-
-        const x = event.clientX;
-        const y = event.clientY;
-        const endRadius = Math.hypot(
-          Math.max(x, innerWidth - x),
-          Math.max(y, innerHeight - y)
-        );
-
-        const transition = document.startViewTransition(updateDOM);
-
-        transition.ready.then(() => {
-          document.documentElement.animate(
-            {
-              clipPath: [
-                `circle(0px at ${x}px ${y}px)`,
-                `circle(${endRadius}px at ${x}px ${y}px)`,
-              ],
-            },
-            {
-              duration: 600,
-              easing: "ease-in-out",
-              pseudoElement: "::view-transition-new(root)",
-            }
-          );
-        });
-      }
-
-      function getMode() { return currentMode; }
 
       function setPartnerPhoto(e) {
         const file = e.target.files[0];
@@ -843,10 +779,10 @@
         msgCounter++;
         const body = document.getElementById("chatBody");
         const row = document.createElement("div");
-        row.className = "msg-row" + (side === "me" ? " me" : "") + " mode-" + currentMode;
+        row.className = "msg-row" + (side === "me" ? " me" : "");
         const bubble = document.createElement("div");
         bubble.className = "bubble " + (type || side);
-        bubble.textContent = text;
+        bubble.innerHTML = text; // allow HTML like <strong>
         
         if (side === "me") {
           row.appendChild(bubble);
@@ -865,7 +801,7 @@
         msgCounter++;
         const body = document.getElementById("chatBody");
         const row = document.createElement("div");
-        row.className = "msg-row mode-" + currentMode;
+        row.className = "msg-row";
         row.id = "typingRow";
         row.appendChild(makePartnerAv("typing"));
         const dots = document.createElement("div");
@@ -881,23 +817,13 @@
         if (r) r.remove();
       }
 
-      function escHtml(s) {
-        return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      }
-
-      function typewrite(bubble, text, done) {
-        let i = 0;
-        function step() {
-          if (i < text.length) {
-            bubble.innerHTML = escHtml(text.substring(0, i + 1)) + '<span class="typing-cursor"></span>';
-            i++;
-            setTimeout(step, 12);
-          } else {
-            bubble.innerHTML = escHtml(text);
-            if (done) done();
-          }
-        }
-        step();
+      function typewrite(bubble, htmlContent, done) {
+        // since we are writing HTML now, typing out char-by-char directly into innerHTML ruins tags.
+        // For simplicity and to support the <strong> label, we will just dump the HTML instantly 
+        // without the typewriter effect, or we could strip the tags. Let's just set it instantly
+        // to be clean and readable for now.
+        bubble.innerHTML = htmlContent;
+        if (done) setTimeout(done, 100);
       }
 
       async function sendChatMsg() {
@@ -921,29 +847,48 @@
           const res = await fetch("/ask", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question: text, mode: getMode() }),
+            body: JSON.stringify({ question: text }),
           });
           const data = await res.json();
-          const answer = data.answer || "No answer provided.";
+          
+          const isNoAnswer = (text) => {
+            if (!text) return true;
+            const lower = text.toLowerCase();
+            return lower.includes("no relevant document") ||
+                   lower.includes("i do not have") ||
+                   lower.includes("could not find a provision") ||
+                   lower.includes("could not find") ||
+                   lower.includes("system error");
+          };
+
+          // A perspective is valid if it doesn't match our "no answer" heuristics.
+          // General questions might have 0 docs but a valid conversational answer, so we don't strictly require docs > 0 here.
+          const hasLaw = !isNoAnswer(data.answer_law);
+          const hasCult = !isNoAnswer(data.answer_culture);
+
+          let combinedHtml = "";
+          
+          if (hasLaw && hasCult) {
+             combinedHtml = "<strong>Legal Perspective:</strong><br><br>" + data.answer_law.replace(/\\n/g, "<br>") +
+                            "<br><br><strong>Cultural Perspective:</strong><br><br>" + data.answer_culture.replace(/\\n/g, "<br>");
+          } else if (hasLaw) {
+             combinedHtml = "<strong>Legal Perspective:</strong><br><br>" + data.answer_law.replace(/\\n/g, "<br>");
+          } else if (hasCult) {
+             combinedHtml = "<strong>Cultural Perspective:</strong><br><br>" + data.answer_culture.replace(/\\n/g, "<br>");
+          } else {
+             // Let's see if there is a conversational fallback in one of them, otherwise default to "not found"
+             combinedHtml = "I couldn't find any specific legal or cultural information regarding your question. Could you provide more details?";
+          }
 
           hideTyping();
-          msgCounter++;
-          const body = document.getElementById("chatBody");
-          const row = document.createElement("div");
-          row.className = "msg-row mode-" + currentMode;
-          row.appendChild(makePartnerAv(msgCounter));
-          const bubble = document.createElement("div");
-          bubble.className = "bubble ai";
-          row.appendChild(bubble);
-          body.appendChild(row);
-          body.scrollTop = body.scrollHeight;
-
-          typewrite(bubble, answer, () => {
+          const bubble = appendBubble("", "them", "ai");
+          
+          typewrite(bubble, combinedHtml, () => {
             isProcessing = false;
             sendBtn.disabled = false;
             sendBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>';
           });
-          } catch (err) {
+        } catch (err) {
           hideTyping();
           appendBubble("Sorry, there was an error communicating with the server.", "them", "ai");
           isProcessing = false;
