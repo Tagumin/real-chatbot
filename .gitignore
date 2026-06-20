@@ -7,12 +7,13 @@ evaluate.py
 chunk/
 # Node.js
 node_modules/
-
+.agents
+.impeccable
 # Logs & temp
 *.log
 temp/
 outputs/
-
+*.md
 # OS junk
 .DS_Store
 Thumbs.db

@@ -1,17 +1,18 @@
 """
-rag.py
-======
-Core RAG Engine for Indonesian Legal Assistant
+rag_debug.py
+============
+RAG Engine + Debug Mode for Terminal Testing
 
-Improvements:
-- Safe imports (LangChain Ollama compatible)
-- Stable output parsing
-- Safer retriever handling
-- Better context building
-- Robust cleaning & citation
+Features:
+✔ Full step-by-step logging
+✔ Retrieval inspection
+✔ Context preview
+✔ LLM raw output trace
+✔ Safe error handling
 """
 
 import re
+import traceback
 from datetime import datetime
 
 from langchain_ollama import OllamaLLM
@@ -24,32 +25,64 @@ from vector import retriever_law, retriever_culture
 # ─────────────────────────────
 # CONFIG
 # ─────────────────────────────
-LLM_MODEL = "qwen2.5:3b"
+LLM_MODEL = "qwen3:4b"
 TEMPERATURE = 0.1
-MAX_CONTEXT_CHARS = 8000
+MAX_CONTEXT_CHARS = 14000
 
 MODE_LAW = "1"
 MODE_CULTURE = "2"
 
-
-# ─────────────────────────────
-# LLM INIT
-# ─────────────────────────────
-llm = OllamaLLM(
-    model=LLM_MODEL,
-    temperature=TEMPERATURE
-)
+DEBUG = True
 
 
 # ─────────────────────────────
-# PROMPT
+# LLM
 # ─────────────────────────────
+llm = OllamaLLM(model=LLM_MODEL, temperature=TEMPERATURE)
+
 PROMPT = """
-You are an Indonesian legal assistant.
+You are an Indonesian legal assistant. Follow these rules in order:
 
-Use ONLY the provided context to answer.
-If no relevant information is found, respond:
-"No relevant legal provision found."
+1. CLASSIFY the question first:
+   - LEGAL QUESTION: about Indonesian law, what is/isn't allowed, penalties, procedures, etc.
+   - GENERAL QUESTION: unrelated to law (greetings, small talk, general knowledge).
+
+2. IF the question is a LEGAL QUESTION:
+   - Use ONLY the provided CONTEXT below. Do not add facts, numbers, or penalties
+     that are not explicitly stated in the context.
+   - If the context fully answers the question, answer it directly and cite the
+     article number(s) used.
+   - If the context is empty, irrelevant, or only partially answers the question,
+     say so explicitly first:
+     "Based on the available legal context, I could not find a provision that
+     directly answers this."
+     Then, ONLY if helpful, you may add ONE short sentence of general legal
+     knowledge, clearly labeled as NOT from the provided law text, e.g.:
+     "(General note, not from the cited law: ...)"
+   - NEVER cite an article number unless its content actually supports the
+     specific claim you are making. If the closest article doesn't match the
+     question's scenario, treat it as "no relevant provision found" instead
+     of citing it anyway.
+
+3. IF the question is a GENERAL QUESTION (not about law):
+   - Answer normally and helpfully using your own general knowledge.
+   - Do not force a legal framing onto it.
+
+4. FORMAT every legal answer using this structure, with each section on its own
+   line separated by a blank line:
+
+   **Summary**
+   One short sentence answering the question directly.
+
+   **Basis**
+   The relevant article number(s) and what they actually say, in plain language.
+
+   **Details**
+   Any conditions, exceptions, or penalties, as a short bullet list if there
+   are multiple points.
+
+   Keep language clear and avoid legal jargon where a plain-language
+   equivalent exists.
 
 CONTEXT:
 {context}
@@ -59,14 +92,13 @@ QUESTION:
 
 ANSWER:
 """
-
 prompt = ChatPromptTemplate.from_template(PROMPT)
 
 chain = prompt | llm | StrOutputParser()
 
 
 # ─────────────────────────────
-# RETRIEVER SELECTOR
+# RETRIEVER
 # ─────────────────────────────
 def get_retriever(mode: str):
     if mode == MODE_LAW:
@@ -77,7 +109,7 @@ def get_retriever(mode: str):
 
 
 # ─────────────────────────────
-# BUILD CONTEXT
+# CONTEXT BUILDER
 # ─────────────────────────────
 def build_context(docs):
     parts = []
@@ -90,12 +122,9 @@ def build_context(docs):
             article = f"Article {match.group(1)}" if match else "Unknown"
 
         content = doc.page_content.strip()
-
         parts.append(f"{article}\n{content}")
 
-    context = "\n\n---\n\n".join(parts)
-
-    return context[:MAX_CONTEXT_CHARS]
+    return "\n\n---\n\n".join(parts)[:MAX_CONTEXT_CHARS]
 
 
 # ─────────────────────────────
@@ -105,48 +134,20 @@ def clean(text: str):
     if not text:
         return ""
 
-    # remove hidden reasoning tags if any
     text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
-
     return text.strip()
 
 
 # ─────────────────────────────
-# POST PROCESS
+# DEBUG PRINT HELPERS
 # ─────────────────────────────
-def post_process(answer: str):
-    if not answer:
-        return "No relevant legal provision found."
-
-    low = answer.lower()
-
-    if "no relevant legal provision found" in low:
-        return answer
-
-    if len(answer.strip()) < 15:
-        return "No relevant legal provision found."
-
-    return answer
-
-
-# ─────────────────────────────
-# CITATION HANDLER
-# ─────────────────────────────
-def add_citation(answer: str, docs):
-    if not docs:
-        return answer
-
-    # If already has article reference, keep it
-    if re.search(r'Article\s+\d+', answer):
-        return answer
-
-    first = docs[0].metadata.get("article", "")
-
-    if not first or first == "-":
-        match = re.search(r'Article\s+(\d+[A-Za-z]*)', docs[0].page_content)
-        first = f"Article {match.group(1)}" if match else "Unknown"
-
-    return f"{answer}\n\nSource: {first}"
+def debug_print(title, content):
+    if not DEBUG:
+        return
+    print(f"\n🟡 {title}")
+    print("-" * 50)
+    print(content)
+    print("-" * 50)
 
 
 # ─────────────────────────────
@@ -155,44 +156,83 @@ def add_citation(answer: str, docs):
 def ask_question(question: str, mode: str = MODE_LAW):
     start = datetime.now()
 
-    retriever, domain = get_retriever(mode)
+    try:
+        debug_print("QUESTION", question)
+        debug_print("MODE", mode)
 
-    if retriever is None:
+        retriever, domain = get_retriever(mode)
+
+        if retriever is None:
+            return {"error": "Invalid mode"}
+
+        # ── RETRIEVAL ──
+        if hasattr(retriever, "invoke"):
+            docs = retriever.invoke(question)
+        else:
+            docs = retriever.get_relevant_documents(question)
+
+        debug_print("DOCS FOUND", len(docs))
+
+        if DEBUG and docs:
+            for i, d in enumerate(docs):
+
+                rerank_score = d.metadata.get("rerank_score", "N/A")
+                rerank_rank = d.metadata.get("rerank_rank", "N/A")
+                bm25_score = d.metadata.get("bm25_score", "N/A")
+                domain = d.metadata.get("domain", "N/A")
+
+                print("\n" + "=" * 80)
+                print(f"DOC {i+1}")
+                print("=" * 80)
+
+                print(f"Domain       : {domain}")
+                print(f"Rerank Rank  : {rerank_rank}")
+                print(f"Rerank Score : {rerank_score}")
+                print(f"BM25 Score   : {bm25_score}")
+
+                print("\nContent:")
+                print(d.page_content[:300])
+
+                print("=" * 80)
+        if not docs:
+            return {
+                "answer": "No relevant documents found.",
+                "domain": domain,
+                "docs": 0,
+                "time": (datetime.now() - start).total_seconds()
+            }
+
+        # ── CONTEXT ──
+        context = build_context(docs)
+        debug_print("CONTEXT PREVIEW", context[:500])
+
+        # ── LLM ──
+        raw = chain.invoke({
+            "context": context,
+            "question": question
+        })
+
+        debug_print("RAW LLM OUTPUT", raw)
+
+        # ── PROCESSING ──
+        answer = clean(raw)
+
+        debug_print("CLEANED ANSWER", answer)
+
+        # ── RESULT ──
         return {
-            "answer": "Invalid mode selected",
-            "domain": None,
-            "docs": 0,
-            "time": 0
-        }
-
-    # safer retrieval (supports multiple retriever types)
-    if hasattr(retriever, "invoke"):
-        docs = retriever.invoke(question)
-    else:
-        docs = retriever.get_relevant_documents(question)
-
-    if not docs:
-        return {
-            "answer": "No relevant documents found.",
+            "answer": answer,
             "domain": domain,
-            "docs": 0,
+            "docs": len(docs),
             "time": (datetime.now() - start).total_seconds()
         }
 
-    context = build_context(docs)
+    except Exception as e:
+        print("\n❌ ERROR OCCURRED")
+        traceback.print_exc()
 
-    raw_answer = chain.invoke({
-        "context": context,
-        "question": question
-    })
-
-    answer = clean(raw_answer)
-    answer = post_process(answer)
-    answer = add_citation(answer, docs)
-
-    return {
-        "answer": answer,
-        "domain": domain,
-        "docs": len(docs),
-        "time": (datetime.now() - start).total_seconds()
-    }
+        return {
+            "error": str(e),
+            "answer": "System error occurred",
+            "time": (datetime.now() - start).total_seconds()
+        }

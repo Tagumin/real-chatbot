@@ -110,6 +110,52 @@ def get_canonical_id(d: Document) -> str:
 
 
 # ─────────────────────────────
+# DIRECT ARTICLE LOOKUP (EXACT MATCH BY NUMBER)
+# ─────────────────────────────
+# Matches things like: "article 5", "Article 274", "pasal 5", "Pasal 274"
+ARTICLE_NUMBER_PATTERN = re.compile(r"(?:article|pasal)\s+(\d+)", re.IGNORECASE)
+
+
+def extract_requested_article_number(query: str) -> Optional[int]:
+    """
+    Look for an explicit article/pasal number in the user's question.
+    Returns None if the question doesn't reference a specific article number
+    (e.g. "explain the fine of category II" has no article number -> None,
+    correctly falls through to semantic search instead of exact lookup).
+    """
+    match = ARTICLE_NUMBER_PATTERN.search(query)
+    if not match:
+        return None
+    return int(match.group(1))
+
+
+def direct_article_lookup(vectorstore: Chroma, domain: str, article_number: int) -> List[Document]:
+    """
+    Fetch the chunk(s) for an exact article number straight from Chroma's
+    metadata, bypassing vector/BM25 similarity entirely. This guarantees a
+    100% hit when the user names a specific article number, instead of
+    relying on embeddings/BM25 to "guess" the right document — which is
+    unreliable for short numeric identifiers (see ms-marco/bge debug session).
+    """
+    try:
+        data = vectorstore.get(where={"article_number": article_number})
+    except Exception:
+        return []
+
+    if not data or not data.get("documents"):
+        return []
+
+    results = []
+    for doc_text, meta in zip(data["documents"], data["metadatas"]):
+        meta = dict(meta or {})
+        meta["domain"] = domain
+        meta["retrieval_method"] = "direct_article_lookup"
+        results.append(Document(page_content=doc_text, metadata=meta))
+
+    return results
+
+
+# ─────────────────────────────
 # BM25 RETRIEVER
 # ─────────────────────────────
 class BM25Retriever:
@@ -251,6 +297,23 @@ class DomainRetriever:
         self.domain = domain
 
     def invoke(self, query: str) -> List[Document]:
+        # STEP 1: if the user names a specific article/pasal number,
+        # try an exact metadata lookup first. This sidesteps the
+        # unreliability of vector/BM25 similarity for short numeric
+        # identifiers entirely (e.g. "article 5" matching unrelated
+        # docs that merely contain the digit "5" somewhere).
+        article_number = extract_requested_article_number(query)
+        if article_number is not None:
+            direct_hits = direct_article_lookup(self.vectorstore, self.domain, article_number)
+            if direct_hits:
+                # Still run them through the reranker so result shape /
+                # rerank_score fields stay consistent with the normal path.
+                return self.reranker.rerank(query, direct_hits, RERANK_TOP_K)
+            # If nothing found by exact number, fall through to semantic
+            # search below -- e.g. user might have mistyped the number,
+            # or be asking a conceptual question that merely contains a digit.
+
+        # STEP 2: normal hybrid semantic search (vector + BM25 + rerank)
         candidates = retrieve_candidates(
             self.vectorstore, self.bm25, query, self.domain
         )
@@ -275,6 +338,15 @@ class HybridRetriever:
         print("✅ System ready (law + culture)\n")
 
     def invoke(self, query: str) -> List[Document]:
+        # Direct article lookup across all domains first (cheap + exact).
+        article_number = extract_requested_article_number(query)
+        if article_number is not None:
+            direct_hits: List[Document] = []
+            for domain, vs in self.vectorstores.items():
+                direct_hits.extend(direct_article_lookup(vs, domain, article_number))
+            if direct_hits:
+                return self.reranker.rerank(query, direct_hits, RERANK_TOP_K)
+
         # This method used to reimplement the entire retrieve+dedup logic
         # (duplicated with DomainRetriever.invoke). Now it simply calls
         # retrieve_candidates() per domain and merges the results.
